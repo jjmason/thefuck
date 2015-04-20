@@ -12,7 +12,7 @@ def _get_output(command, settings):
     return result.stderr.read().decode()
 
 def _count_history_uses(name):
-    script = "history | egrep '\\b{}\\b' | wc -l".format(name)
+    script = "fc -l 1 | egrep '\\b{}\\b' | wc -l".format(name)
     result = Popen(script, shell=True,
                    stdout=PIPE)
     return int(result.stdout.read())
